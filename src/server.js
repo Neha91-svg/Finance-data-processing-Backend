@@ -4,9 +4,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Connect to Database
 connectDB();
+
+// 👇 YAHAN ADD KARO
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    message: 'Server is running'
+  });
+});
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
